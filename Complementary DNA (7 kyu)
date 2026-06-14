@@ -1,0 +1,21 @@
+function dnaStrand(e){
+  const result = e.split('')
+   //console.log(result)
+   let resultF = [];
+
+   result.map(el => {
+      if (el === 'A') {
+         return resultF.push('T')
+      } else if (el === 'T') {
+         return resultF.push('A')
+      } else if (el === 'G') {
+         return resultF.push('C')
+      } else {
+         return resultF.push('G')
+      }
+   })
+   //console.log(resultF)
+   //console.log(`${resultF.join('')}`)
+
+   return `${resultF.join('')}`
+}
