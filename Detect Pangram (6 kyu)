@@ -1,0 +1,11 @@
+function isPangram(e){
+   const result = e.toLowerCase().split('')
+
+   const result1 = [...new Set(result)]
+
+   const result2 = result1.filter(el => el >= 'a' && el <= 'z')
+   //const result2 = result1.map(item => item.replace(/[^a-z]/g, '')).filter(item => item.length > 0);
+
+
+   return result2.length === 26
+}
