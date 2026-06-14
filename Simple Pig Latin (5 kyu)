@@ -1,0 +1,8 @@
+function pigIt(e){
+   let res = e.split(' ')
+   res = res.map(el => {
+      if (!el.match(/[a-zA-Z]/)) return el
+      return el.slice(1) + el[0] + 'ay'
+   })
+   return res.join(' ')
+}
