@@ -1,0 +1,16 @@
+function letterCheck(arr) {
+    const [first, second] = arr;
+    
+  
+    const firstLower = first.toLowerCase();
+    const secondLower = second.toLowerCase();
+    
+    for (let i = 0; i < secondLower.length; i++) {
+        const char = secondLower[i];
+        if (!firstLower.includes(char)) {
+            return false; 
+        }
+    }
+    
+    return true;
+}
