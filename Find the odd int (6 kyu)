@@ -1,0 +1,11 @@
+function findOdd(A) {
+  const obj = {};
+   A.forEach(el => obj[el] = (obj[el] || 0) + 1);
+
+   for (let i in obj) {
+      if (obj[i] % 2 !== 0) {
+         return Number(i)
+      }
+   }
+
+}
