@@ -1,0 +1,17 @@
+function generateHashtag (str) {
+  const splitStr = str.toLowerCase().split(' ')
+   
+   
+   const filtered = splitStr.filter(el => el !== '')
+
+   if (filtered.length === 0) {
+      return false
+   }
+   
+   const capitalized = filtered.map((el) => 
+      el[0].toUpperCase()+el.slice(1)
+   )
+   // console.log(capitalized)
+   const result = '#'+capitalized.join('')
+   return result.length > 140 ? false : result;
+}
