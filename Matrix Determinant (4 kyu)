@@ -1,0 +1,40 @@
+package kata
+
+func Determinant(matrix [][]int) int {
+	n := len(matrix)
+
+	if n == 1 {
+		return matrix[0][0]
+	}
+	if n == 2 {
+		return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
+	}
+
+	det := 0
+	sign := 1
+	for col := 0; col < n; col++ {
+		minor := getMinor(matrix, 0, col)
+		det += sign * matrix[0][col] * Determinant(minor)
+		sign = -sign
+	}
+	return det
+}
+
+func getMinor(matrix [][]int, rowToRemove, colToRemove int) [][]int {
+	n := len(matrix)
+	minor := make([][]int, 0, n-1)
+	for i := 0; i < n; i++ {
+		if i == rowToRemove {
+			continue
+		}
+		row := make([]int, 0, n-1)
+		for j := 0; j < n; j++ {
+			if j == colToRemove {
+				continue
+			}
+			row = append(row, matrix[i][j])
+		}
+		minor = append(minor, row)
+	}
+	return minor
+}
