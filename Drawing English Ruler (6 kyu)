@@ -1,0 +1,43 @@
+package kata
+
+import (
+	"strconv"
+	"strings"
+)
+
+type Ruler struct {
+	t int
+	n int
+}
+
+func NewRuler(t, n int) Ruler {
+	if t < 2 {
+		panic("t must be >= 2")
+	}
+	if n < 1 {
+		panic("n must be >= 1")
+	}
+	return Ruler{t: t, n: n}
+}
+
+func drawTicks(length int) []string {
+	if length == 0 {
+		return nil
+	}
+	var lines []string
+	lines = append(lines, drawTicks(length-1)...)
+	lines = append(lines, strings.Repeat("-", length))
+	lines = append(lines, drawTicks(length-1)...)
+	return lines
+}
+
+func (r Ruler) Draw() string {
+	var lines []string
+	for inch := 0; inch <= r.n; inch++ {
+		lines = append(lines, strings.Repeat("-", r.t)+" "+strconv.Itoa(inch))
+		if inch < r.n {
+			lines = append(lines, drawTicks(r.t-1)...)
+		}
+	}
+	return strings.Join(lines, "\n")
+}
