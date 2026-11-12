@@ -1,0 +1,26 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"math/big"
+	"os"
+	"strings"
+)
+
+func fusc(n *big.Int) *big.Int {
+	a := big.NewInt(1)
+	b := big.NewInt(0)
+	nn := new(big.Int).Set(n)
+
+	for nn.Sign() > 0 {
+		if nn.Bit(0) == 0 {
+			a.Add(a, b)
+		} else {
+			b.Add(a, b)
+		}
+		nn.Rsh(nn, 1)
+	}
+
+	return b
+}
